@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentic Berlin | Connection, Presence, Growth</title>
+    <style>
+        :root {
+            --teal: #2A7D8C;
+            --purple: #7A5290;
+            --pink: #B04B73;
+            --light: #f5f5f5;
+            --dark: #333333;
+            --gradient: linear-gradient(135deg, #2A7D8C, #7A5290, #B04B73);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--purple);
+        }
+        
+        .hero {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .circle-pattern {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .circle-1 {
+            top: -100px;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            bottom: -150px;
+            left: -100px;
+        }
+        
+        .circle-pattern::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .circle-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--purple);
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--purple);
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h3 {
+            font-size: 32px;
+            color: var(--purple);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        
+        .practices {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .practice-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-circle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(122, 82, 144, 0.1);
+            border-radius: 50%;
+            top: -30px;
+            right: -30px;
+        }
+        
+        .practice-content {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .practice-content h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--teal);
+        }
+        
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+        }
+        
+        .about::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(122, 82, 144, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--purple);
+        }
+        
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .service-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(122, 82, 144, 0.1);
+            border-radius: 50%;
+            bottom: -60px;
+            left: -60px;
+        }
+        
+        .service-content {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-content h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--teal);
+        }
+        
+        .cta {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        footer {
+            background-color: white;
+            padding: 50px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--purple);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--purple);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: 1;
+            }
+            
+            .about-content {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src='./ab_01.png' alt="Authentic Berlin Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#practices">Practices</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#collaborate">Collaborate</a></li>
+                    <li><a href="#cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="circle-pattern circle-1">
+        </div>
+        <div class="circle-pattern circle-2">
+        </div>
+        <div class="container">
+            <h2>Experience the Art of Deep Connection</h2>
+            <p>Authentic Berlin creates spaces for genuine human connection through authentic relating, circling, and presence-based practices.</p>
+            <a href="https://t.me/+XknoXwqdHaswZWNk" target="_blank" class="btn btn-white">Join Our Telegram</a>
+            <a href="#contact" class="btn btn-outline">Book a Discovery Call</a>
+        </div>
+    </section>
+    
+    <section id="practices">
+        <div class="container">
+            <div class="section-title">
+                <h3>Our Practices</h3>
+                <p>Discover transformative modalities that foster deeper connection, presence, and authenticity.</p>
+            </div>
+            <div class="practices">
+                <div class="practice-card">
+                    <div class="card-circle"></div>
+                    <div style="height: 200px; overflow: hidden;">
+                        <img src='./pic_02.jpeg' alt="Authentic Relating" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="practice-content">
+                        <h4>Authentic Relating</h4>
+                        <p>Authentic Relating is a set of practices designed to build awareness of yourself in relation to others, fostering a greater capacity for connection. These practices help you:</p>
+                        <ul>
+                            <li>Communicate with honesty and openness</li>
+                            <li>Stay connected during challenging interactions</li>
+                            <li>Recognize and express your true feelings and needs</li>
+                            <li>Listen deeply to others without judgment</li>
+                        </ul>
+                        <p>Through structured exercises, you'll experience what it means to be fully present with others in ways that transcend ordinary social interactions.</p>
+                    </div>
+                </div>
+                <div class="practice-card">
+                    <div class="card-circle"></div>
+                    <div style="height: 200px; overflow: hidden;">
+                        <img src='./pic_01.jpeg' alt="Circling" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="practice-content">
+                        <h4>Circling</h4>
+                        <p>Circling is a dynamic, present-moment awareness practice where a small group of people focus their attention on what's happening in the moment – both internally and in relation to others. It's sometimes described as "meditation with other people."</p>
+                        <p>In a Circle, you might:</p>
+                        <ul>
+                            <li>Explore your direct experience as it unfolds</li>
+                            <li>Practice deep listening and authentic expression</li>
+                            <li>Develop your capacity to stay present with discomfort</li>
+                            <li>Experience being fully seen and acknowledged</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" style="background-color: white;">
+        <div class="container">
+            <div class="about">
+                <div class="about-image">
+                    <img src='./luz_01.jpg' alt="Luz">
+                </div>
+                <div class="about-content">
+                    <h3>About Luz</h3>
+                    <p>I'm an experienced video games developer with a passion for relational and mindfulness practices.</p>
+                    <p>I've always been drawn to games in all their forms: board games, social games, role-playing games, etc. A context with clear structure and rules has the power to ground me, awakens my curiosity, minimizes my social anxiety, and allows for my creativity and personal expression to flourish.</p>
+                    <p>When I discovered Authentic Relating games an incredible gate opened for me. I could harness that same openness and apply it to the way I create and cultivate friendships —in a more conscious, intentional and genuine way. The practice of Circling® propelled me forward once more, uncovering a wealth of inner wisdom and personal growth.</p>
+                    <p>After these transformative experiences I devoted myself to helping others create and nurture healthier relationships. I ran more than 18 workshops over the course of the following year, and I became a certified Circling facilitator by Circling Europe.</p>
+                    <p>My aim is to create spaces where individuals can authentically connect, grow, and learn with one another.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h3>Services</h3>
+                <p>Discover how authentic relating and circling practices can transform your life and relationships.</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h4>Individual Coaching</h4>
+                        <p>One-on-one sessions to develop your relational intelligence, presence, and authentic self-expression. These personalized sessions help you:</p>
+                        <ul>
+                            <li>Identify and transform patterns that block connection</li>
+                            <li>Develop greater self-awareness and emotional literacy</li>
+                            <li>Build confidence in expressing your truth</li>
+                            <li>Navigate challenging conversations with ease</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h4>Relationship Coaching</h4>
+                        <p>For couples seeking to deepen their connection, improve communication, and navigate challenges together. These sessions offer:</p>
+                        <ul>
+                            <li>Tools to break through recurring conflicts</li>
+                            <li>Practices for deeper listening and understanding</li>
+                            <li>Techniques to maintain connection during difficulties</li>
+                            <li>Ways to express needs and boundaries with love</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h4>Group Events</h4>
+                        <p>Regular authentic relating and circling events in Berlin. Join our community to experience:</p>
+                        <ul>
+                            <li>Facilitated authentic relating games</li>
+                            <li>Circling sessions for deep connection</li>
+                            <li>Workshops on specific relational themes</li>
+                            <li>A supportive community of practice</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="collaborate" style="background-color: white;">
+        <div class="container">
+            <div class="section-title">
+                <h3>Let's Collaborate</h3>
+                <p>Interested in co-creating events or workshops? I love working with like-minded facilitators and practitioners.</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; background: var(--light); padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden;">
+                <div class="circle-pattern" style="position: absolute; width: 150px; height: 150px; border: 1px solid rgba(122, 82, 144, 0.1); border-radius: 50%; top: -75px; right: -75px; z-index: 0;"></div>
+                
+                <div style="position: relative; z-index: 1;">
+                    <h4 style="font-size: 24px; margin-bottom: 20px; color: var(--purple);">Collaboration Opportunities</h4>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 30px;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <h5 style="font-size: 18px; margin-bottom: 10px; color: var(--teal);">What I'm Looking For</h5>
+                            <ul>
+                                <li>Co-facilitators for workshops and events</li>
+                                <li>Complementary modality practitioners</li>
+                                <li>Venue partnerships in Berlin</li>
+                                <li>Community building initiatives</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 250px;">
+                            <h5 style="font-size: 18px; margin-bottom: 10px; color: var(--teal);">What I Bring</h5>
+                            <ul>
+                                <li>Certified Circling facilitation</li>
+                                <li>Experience hosting 25+ workshops</li>
+                                <li>Community connections in Berlin</li>
+                                <li>Passion for creating transformative spaces</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-bottom: 30px;">If you're passionate about authentic connection and would like to explore ways we could work together, I'd love to hear from you. Let's create something meaningful together!</p>
+                    <div style="justify-content: center; display: flex;">
+                        <a href="mailto:contact@authenticberlin.com" class="btn" style="display: inline-block; background: var(--gradient); color: white; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 500;">Reach Out to Collaborate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="cta" class="cta">
+        <div class="circle-pattern circle-1">
+        </div>
+        <div class="container">
+            <h3>Ready to Experience Deeper Connection?</h3>
+            <p>Join our community and stay updated on upcoming events and workshops in Berlin.</p>
+            <a href="https://t.me/+XknoXwqdHaswZWNk" target="_blank" class="btn btn-white">Join Our Telegram</a>
+            <a href="#contact" class="btn btn-outline">Book a Discovery Call</a>
+        </div>
+    </section>
+    
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src='./ab_01.png' alt="Authentic Berlin Logo">
+                    <p>Creating spaces for genuine human connection in Berlin through authentic relating, circling, and presence-based practices.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="#practices">Practices</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://t.me/+XknoXwqdHaswZWNk" target="_blank">Telegram Channel</a></li>
+                        <li><a href="#contact">Book a Call</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Authentic Berlin. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
